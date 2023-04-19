@@ -23,6 +23,7 @@ import {
   jobit,
   tripguide,
   threejs,
+  python,
 } from "../assets";
 
 export const navLinks = [
@@ -93,10 +94,6 @@ const technologies = [
     icon: nodejs,
   },
   {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
     name: "Three JS",
     icon: threejs,
   },
@@ -105,12 +102,41 @@ const technologies = [
     icon: git,
   },
   {
-    name: "figma",
-    icon: figma,
-  },
-  {
     name: "docker",
     icon: docker,
+  },
+  {
+    name: "python",
+    icon: python,
+  }
+];
+
+const education = [
+  {
+    title: "Grundschule",
+    company_name: "Starbucks",
+    icon: starbucks,
+    iconBg: "#383E56",
+    date: "March 2020 - April 2021",
+    points: [
+      "Developing and maintaining web applications using React.js and other related technologies.",
+      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      "Implementing responsive design and ensuring cross-browser compatibility.",
+      "Participating in code reviews and providing constructive feedback to other developers.",
+    ],
+  },
+  {
+    title: "und so",
+    company_name: "Meta",
+    icon: meta,
+    iconBg: "#E6DEDD",
+    date: "Jan 2023 - Present",
+    points: [
+      "Developing and maintaining web applications using React.js and other related technologies.",
+      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      "Implementing responsive design and ensuring cross-browser compatibility.",
+      "Participating in code reviews and providing constructive feedback to other developers.",
+    ],
   },
 ];
 
@@ -262,4 +288,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, technologies, education, experiences, testimonials, projects };
