@@ -47,7 +47,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        Hi, I'm Lukas, a 21-year-old Applied Data Science student from Germany. I am currently studying in my first semester at the Georg-August-University of Göttingen. My interests lie in the fields of Data Science, Web Development and Machine Learning.
+        Hi, I'm Lukas, a 21-year-old Applied Data Science student from Germany. I am currently studying in my second semester at the Georg-August-University of Göttingen. My interests lie in the fields of Data Science, Web Development, Machine Learning and Physics.
 <br /><br />
 
 I am fascinated by the power of data and how it can be used to understand and improve the world. My goal is to become an expert in Data Science and apply my skills to different industries and projects. I am always looking for new opportunities to learn and grow.
