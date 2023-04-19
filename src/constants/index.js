@@ -33,7 +33,7 @@ export const navLinks = [
   },
   {
     id: "edu",
-    title: "edu",
+    title: "Edu",
   },
   {
     id: "contact",
@@ -43,19 +43,19 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
+    title: "Student",
     icon: web,
   },
   {
-    title: "React Native Developer",
+    title: "Data Science",
     icon: mobile,
   },
   {
-    title: "Backend Developer",
+    title: "Physics",
     icon: backend,
   },
   {
-    title: "Content Creator",
+    title: "Personal Growth",
     icon: creator,
   },
 ];
