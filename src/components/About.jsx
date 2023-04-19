@@ -47,11 +47,16 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I'm a skilled software developer with experience in TypeScript and
-        JavaScript, and expertise in frameworks like React, Node.js, and
-        Three.js. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring your ideas to life!
+        Hi, I'm Lukas, a 21-year-old Applied Data Science student from Germany. I am currently studying in my first semester at the Georg-August-University of Göttingen. My interests lie in the fields of Data Science, Web Development and Machine Learning.
+<br /><br />
+
+I am fascinated by the power of data and how it can be used to understand and improve the world. My goal is to become an expert in Data Science and apply my skills to different industries and projects. I am always looking for new opportunities to learn and grow.
+<br /> <br />
+
+My values are honesty, curiosity and passion. I believe in always doing my best and constantly developing myself. I enjoy learning new things every day.
+<br /><br />
+
+If you have any questions or would like to get in touch, don't hesitate to contact me. You can email me or follow me on Twitter or LinkedIn. I look forward to hearing from you!
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>
