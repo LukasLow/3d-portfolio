@@ -11,6 +11,7 @@ import { styles } from "../styles";
 import { education as experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
+import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/solid'
 
 const ExperienceCard = ({ experience }) => {
   return (
@@ -20,14 +21,19 @@ const ExperienceCard = ({ experience }) => {
         color: "#fff",
       }}
       contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-      date={experience.date}
+      date={
+        <>
+          <div className='text-white text-[16px]'>{experience.date}</div>
+          <div className='text-white text-[14px]'>{experience.location}</div>
+        </>
+      }
       iconStyle={{ background: experience.iconBg }}
       icon={
         <div className='flex justify-center items-center w-full h-full'>
           <img
             src={experience.icon}
             alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
+            className='w-[90%] h-[90%] object-contain z-0 rounded-full overflow-hidden'
           />
         </div>
       }
