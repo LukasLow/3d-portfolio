@@ -19,8 +19,14 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
+import threejs from "./tech/three-js_logo.png";
 import python from "./tech/python.png";
+import flask from "./tech/flask.png";
+import github_logo from "./tech/github.png";
+import sql from "./tech/sql.png";
+import java from "./tech/java.png";
+
+import airline from "./projects/proj_airlinewebpage.png"
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -43,6 +49,11 @@ import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
 export {
+  flask,
+  github_logo,
+  sql,
+  java,
+  airline,
   Grundschule,
   Hauptschule,
   HZS,
