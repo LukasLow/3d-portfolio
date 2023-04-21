@@ -9,7 +9,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-camera.position.z = 50;
+camera.position.z = 150;
 
 const stars = 10000;
 const starGeometry = new THREE.BufferGeometry();
@@ -18,11 +18,13 @@ const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 });
 const positions = new Float32Array(stars * 3);
 
 for (let i = 0; i < stars; i++) {
-  const radialDistance = Math.random() * 30;
+  const radialDistance = Math.pow(Math.random(), 0.7) * 80;
   const angle = Math.random() * Math.PI * 2;
-  const x = radialDistance * Math.cos(angle);
-  const y = (Math.random() - 0.5) * 10;
-  const z = radialDistance * Math.sin(angle);
+  const spiralFactor = 5;
+  const armFactor = Math.floor(Math.random() * 2) * Math.PI;
+  const x = (radialDistance * Math.cos(angle + armFactor)) + (spiralFactor * radialDistance * Math.sin(angle));
+  const y = (Math.random() - 0.5) * 20;
+  const z = (radialDistance * Math.sin(angle + armFactor)) - (spiralFactor * radialDistance * Math.cos(angle));
 
   positions[i * 3] = x;
   positions[i * 3 + 1] = y;
