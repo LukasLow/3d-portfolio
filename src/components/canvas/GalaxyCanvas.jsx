@@ -5,7 +5,7 @@ import Galaxy from "./Galaxy";
 
 const GalaxyCanvas = () => {
   return (
-    <Canvas camera={{ position: [0, 0, 1800], fov: 45 }}>
+    <Canvas camera={{ position: [0, 0, 1500], fov: 40 }}>
       <ambientLight intensity={0.7} />
       <pointLight position={[1000, 1000, 1000]} intensity={2} />
       <Suspense fallback={null}>

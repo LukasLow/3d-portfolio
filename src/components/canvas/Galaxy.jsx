@@ -1,48 +1,45 @@
-import React from "react";
-import { BufferGeometry, BufferAttribute, Color, PointsMaterial, Points, Mesh, SphereGeometry, MeshBasicMaterial } from "three";
+import React, { useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { BufferGeometry, Float32BufferAttribute, PointsMaterial } from 'three';
+import * as THREE from 'three';
 
-const Galaxy = () => {
-  const starCount = 10000;
-  const starGeometry = new BufferGeometry();
-  const starPositions = new Float32Array(starCount * 3);
-  const starColors = new Float32Array(starCount * 3);
+function createSpiralGalaxy(numStars, numArms, armWidth) {
+  const geometry = new THREE.BufferGeometry();
+  const positions = [];
 
-  for (let i = 0; i < starCount; i++) {
-    const i3 = i * 3;
-    const radius = 700 + Math.random() * 300;
-    const spinAngle = radius * Math.PI;
-    const height = (Math.random() - 0.5) * 200;
-
-    const spiralArmFactor = Math.random() > 0.5 ? 1 : -1;
-
-    starPositions[i3] = Math.cos(spinAngle) * radius + Math.random() * 50 * spiralArmFactor;
-    starPositions[i3 + 1] = height;
-    starPositions[i3 + 2] = Math.sin(spinAngle) * radius + Math.random() * 50 * spiralArmFactor;
-
-    const color = new Color();
-    color.setHSL(Math.random(), 0.7, 0.7);
-    color.toArray(starColors, i3);
+  for (let i = 0; i < numStars; i++) {
+    const armIndex = i % numArms;
+    const angle = (Math.PI * 2 * i) / numStars + (armIndex * (Math.PI * 2)) / numArms;
+    const radius = Math.sqrt(Math.random()) * armWidth + 0.01; // Add a small offset to avoid NaN
+    const x = Math.cos(angle) * radius;
+    const y = (Math.random() - 0.5) * armWidth;
+    const z = Math.sin(angle) * radius;
+    positions.push(x, y, z);
   }
 
-  starGeometry.setAttribute("position", new BufferAttribute(starPositions, 3));
-  starGeometry.setAttribute("color", new BufferAttribute(starColors, 3));
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.computeBoundingSphere(); // Compute the bounding sphere after setting positions
+  return geometry;
+}
 
-  const starMaterial = new PointsMaterial({
-    size: 5,
-    sizeAttenuation: true,
-    vertexColors: true,
+const Galaxy = () => {
+  const mesh = useRef();
+
+  const numStars = 10000;
+  const numArms = 3;
+  const armWidth = 50;
+
+  const galaxyGeometry = createSpiralGalaxy(numStars, numArms, armWidth);
+  const galaxyMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 });
+
+  useFrame(({ clock }) => {
+    if (mesh.current) {
+      mesh.current.rotation.x = clock.getElapsedTime() * 0.01;
+      mesh.current.rotation.y = clock.getElapsedTime() * 0.01;
+    }
   });
 
-  const galaxy = new Points(starGeometry, starMaterial);
-
-  // Add a core
-  const core = new Mesh(
-    new SphereGeometry(30, 32, 32),
-    new MeshBasicMaterial({ color: 0xffffff })
-  );
-  galaxy.add(core);
-
-  return <primitive object={galaxy} />;
+  return <points ref={mesh} geometry={galaxyGeometry} material={galaxyMaterial} />;
 };
 
 export default Galaxy;
