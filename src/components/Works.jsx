@@ -47,7 +47,7 @@ const ProjectCard = ({
               alt="project_image"
               className="w-full h-full object-cover rounded-2xl"
             />
-
+  
             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
               <div
                 onClick={() => window.open(source_code_link, "_blank")}
@@ -61,7 +61,7 @@ const ProjectCard = ({
               </div>
             </div>
           </div>
-
+  
           <div className="mt-5 text-center">
             <h3 className="text-white font-bold text-[24px]">{name}</h3>
             <div className="mt-4 flex flex-wrap gap-2 justify-center">
@@ -83,7 +83,7 @@ const ProjectCard = ({
           </div>
         </Tilt>
       </motion.div>
-
+  
       {showPopup && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -96,10 +96,10 @@ const ProjectCard = ({
             className="fixed top-0 left-0 w-full h-full bg-black opacity-60 z-40"
             onClick={handlePopupClose}
           />
-
+  
           <div className="bg-black p-8 rounded-xl z-50 max-w-full">
             <h2 className={`${styles.sectionHeadText}`}>{name}</h2>
-            <p className="mt-3 text-secondary text-[17px]">{description}</p>
+            <p className="mt-3 text-secondary text-[17px] overflow-y-scroll max-h-60">{description}</p>
             <div className="mt-4 flex flex-wrap gap-2 justify-center">
               {tags.map((tag) => (
                 <p
