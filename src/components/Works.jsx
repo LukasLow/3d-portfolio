@@ -97,7 +97,7 @@ const ProjectCard = ({
             onClick={handlePopupClose}
           />
   
-          <div className="bg-black p-8 rounded-xl z-50 max-w-full">
+          <div className="bg-black p-8 rounded-xl z-51 max-w-full">
             <h2 className={`${styles.sectionHeadText}`}>{name}</h2>
             <p className="mt-3 text-secondary text-[17px] overflow-y-scroll max-h-60">{description}</p>
             <div className="mt-4 flex flex-wrap gap-2 justify-center">
