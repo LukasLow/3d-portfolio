@@ -1,5 +1,5 @@
 ## To do
-- [ ] Education und workex anpassen
+- [ ] Projects Cards mit dem popup verbessers
 - [ ] airline project in einenem docker machen und es showcasen
 - [ ] a
-- [ ] a
+- [ ] for /test.html stoped at the image for the particle ca 30min
