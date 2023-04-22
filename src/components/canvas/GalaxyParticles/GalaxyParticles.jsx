@@ -50,40 +50,46 @@ class Sketch {
     let random_max_radius = Math.random() * (2.0 - 1.4) + 1.4;
     let random_size = Math.random() * (1.3 - 0.8) + 0.8;
     let random_amp = Math.random() * (1.1 - 0.9) + 0.9;
-    let getRandomHexColor = () => '#' + Math.floor(Math.random() * 16777215).toString(16);
+    let baseHue = Math.floor(Math.random() * 360); // Zufälliger Farbton von 0 bis 359
+
+    let getRandomHSLColor = () => {
+      let hue = baseHue + Math.floor(Math.random() * 100 - 50); // Zufälliger Farbton im Bereich von +- 50 Grad
+      let saturation = Math.floor(Math.random() * 26 + 74); // Zufällige Sättigung im Bereich von 74% bis 100%
+      let lightness = Math.floor(Math.random() * 26 + 48); // Zufällige Helligkeit im Bereich von 48% bis 74%
+      return `hsl(${hue}, ${saturation}%, ${lightness}%)`; // HSL-Farbe als Zeichenfolge zurückgeben
+    };
+
 
     let opts = [
       {
-        color: "#f7b373",
+        color: getRandomHSLColor(),
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: "#88b3ce",
+        color: getRandomHSLColor(),
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: "#e66d45",
+        color: getRandomHSLColor(),
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: "#08c447",
+        color: getRandomHSLColor(),
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
     ]
-
-    opts.forEach(opt => opt.color = getRandomHexColor());
 
     opts.forEach(op=>{
       this.addObjects(op)
