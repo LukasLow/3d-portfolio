@@ -45,36 +45,45 @@ class Sketch {
     
     this.isPlaying = true;
     
+    //let randomNumber = Math.random() * (max - min) + min;
+    let random_min_radius = Math.random() * (0.4 - 0.3) + 0.3;
+    let random_max_radius = Math.random() * (2.0 - 1.4) + 1.4;
+    let random_size = Math.random() * (1.3 - 0.8) + 0.8;
+    let random_amp = Math.random() * (1.1 - 0.9) + 0.9;
+    let getRandomHexColor = () => '#' + Math.floor(Math.random() * 16777215).toString(16);
+
     let opts = [
       {
-        min_radius: 0.3,
-        max_radius: 1.5,
         color: "#f7b373",
-        size: 1,
-        amp: 1,
+        min_radius: random_min_radius,
+        max_radius: random_max_radius,
+        size: random_size,
+        amp: random_amp,
       },
       {
-        min_radius: 0.3,
-        max_radius: 1.5,
         color: "#88b3ce",
-        size: 0.5,
-        amp: 2,
+        min_radius: random_min_radius,
+        max_radius: random_max_radius,
+        size: random_size,
+        amp: random_amp,
       },
       {
-        min_radius: 0.3,
-        max_radius: 1.5,
         color: "#e66d45",
-        size: 0.5,
-        amp: 2,
+        min_radius: random_min_radius,
+        max_radius: random_max_radius,
+        size: random_size,
+        amp: random_amp,
       },
       {
-        min_radius: 0.3,
-        max_radius: 1.5,
         color: "#08c447",
-        size: 0.5,
-        amp: 2,
+        min_radius: random_min_radius,
+        max_radius: random_max_radius,
+        size: random_size,
+        amp: random_amp,
       },
     ]
+
+    opts.forEach(opt => opt.color = getRandomHexColor());
 
     opts.forEach(op=>{
       this.addObjects(op)
