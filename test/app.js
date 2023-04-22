@@ -7,7 +7,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import particleTexture from './shader/particle.webp';
 
 function lerp(a,b,t){
-  return a*(1-t)+b;
+  return a*(1-t)+b*t;
 }
 
 export default class Sketch {
@@ -81,7 +81,7 @@ export default class Sketch {
     let that = this;
     let count = 10000;
     let min_radius = 0.5;
-    let max_radius = 2;
+    let max_radius = 1;
     let particlegeo = new THREE.PlaneGeometry(1,1);
     let geo = new THREE.InstancedBufferGeometry();
     geo.instanceCount = count;
@@ -94,7 +94,7 @@ export default class Sketch {
       let theta = Math.random()*2*Math.PI;
       let r = lerp(min_radius,max_radius,Math.random())
       let x = r*Math.sin(theta);
-      let y = (Math.random()-0.5)*0.05;
+      let y = (Math.random()-0.5)*0.1;
       let z = r*Math.cos(theta);
       
       
