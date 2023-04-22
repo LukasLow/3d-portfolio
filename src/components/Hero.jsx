@@ -24,14 +24,14 @@ const Hero = () => {
           </p>
         </div>
       </div>
-      <div className="z-50 absolute top-0 left-0 right-0 bottom-0">
+      <div className="z-20 absolute top-0 left-0 right-0 bottom-0">
         <Galaxy />
       </div>
       
 
 
 
-      <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
+      <div className='z-50 absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
         <a href='#about'>
           <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
             <motion.div
