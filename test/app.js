@@ -39,9 +39,29 @@ export default class Sketch {
     this.camerapos();
     this.time = 0;
 
+    this.materials =[]
+    
     this.isPlaying = true;
     
-    this.addObjects();
+    let opts = [
+      {
+        min_radius: 0.3,
+        max_radius: 1.5,
+        color: "#f7b373",
+        size: 1,
+      },
+      {
+        min_radius: 0.3,
+        max_radius: 1.5,
+        color: "#88b3ce",
+        size: 0.5,
+      }
+    ]
+
+    opts.forEach(op=>{
+      this.addObjects(op)
+    })
+
     this.resize();
     this.render();
     this.setupResize();
@@ -77,11 +97,11 @@ export default class Sketch {
     this.camera.updateProjectionMatrix();
   }
 
-  addObjects() {
+  addObjects(opts) {
     let that = this;
     let count = 10000;
-    let min_radius = 0.5;
-    let max_radius = 1;
+    let min_radius = opts.min_radius;
+    let max_radius = opts.max_radius;
     let particlegeo = new THREE.PlaneGeometry(1,1);
     let geo = new THREE.InstancedBufferGeometry();
     geo.instanceCount = count;
@@ -109,7 +129,7 @@ export default class Sketch {
 
 
 
-    this.material = new THREE.ShaderMaterial({
+    let material = new THREE.ShaderMaterial({
       extensions: {
         derivatives: "#extension GL_OES_standard_derivatives : enable"
       },
@@ -117,6 +137,8 @@ export default class Sketch {
       uniforms: {
         uTexture: { value: new THREE.TextureLoader().load(particleTexture) },
         time: { value: 0 },
+        size: { value: opts.size },
+        uColor: { value: new THREE.Color(opts.color) },
         resolution: { value: new THREE.Vector4() },
       },
       // wireframe: true,
@@ -125,17 +147,19 @@ export default class Sketch {
       vertexShader: vertex,
       fragmentShader: fragment
     });
-
+    this.materials.push(material)
     this.geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
 
-    this.points = new THREE.Mesh(geo, this.material);
+    this.points = new THREE.Mesh(geo, material);
     this.scene.add(this.points );
   }
 
   render() {
     if (!this.isPlaying) return;
     this.time += 0.05;
-    this.material.uniforms.time.value = this.time;
+    this.materials.forEach(m=>{
+      m.uniforms.time.value = this.time*0.5;
+    })
     requestAnimationFrame(this.render.bind(this));
     this.renderer.render(this.scene, this.camera);
   }
