@@ -23,6 +23,10 @@ export default class Sketch {
     this.renderer.setClearColor(0x000000, 1); 
     this.renderer.outputEncoding = THREE.sRGBEncoding;
 
+    this.raycaster = new THREE.Raycaster();
+    this.pointer = new THREE.Vector2();
+    this.point = new THREE.Vector3();
+
     this.container.appendChild(this.renderer.domElement);
 
     this.camera = new THREE.PerspectiveCamera(
@@ -61,12 +65,43 @@ export default class Sketch {
     opts.forEach(op=>{
       this.addObjects(op)
     })
-
+    this.raycasterEvent();
     this.resize();
     this.render();
     this.setupResize();
     // this.settings();
   }
+
+  raycasterEvent() {
+
+    let mesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(10,10,10,10).rotateX(-Math.PI/2),
+      new THREE.MeshBasicMaterial({color: 0xff0000, wireframe: true})
+    )
+
+    let test = new THREE.Mesh (
+      new THREE.SphereGeometry (0.1, 10, 10), 
+      new THREE.MeshBasicMaterial( {color: 0xff0000, wireframe: true})
+    )
+    this.scene.add (test)
+
+    // this.scene.add(mesh)
+
+    window.addEventListener( "pointermove", (event)=>{
+      this.pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+      this.pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+      this.raycaster.setFromCamera( this.pointer, this.camera );
+
+      const intersects = this.raycaster.intersectObjects( [mesh] );
+
+      if ( intersects[0]) {
+        console.log(intersects[0].point)
+        test.position.copy (intersects [0].point)
+        this.point.copy*(intersects[0].point)
+      }
+    });
+  } 
 
   camerapos() {
     this.nowcamerapos = () => {
@@ -137,6 +172,7 @@ export default class Sketch {
       uniforms: {
         uTexture: { value: new THREE.TextureLoader().load(particleTexture) },
         time: { value: 0 },
+        uMouse: { value: new THREE.Vector3() },
         size: { value: opts.size },
         uColor: { value: new THREE.Color(opts.color) },
         resolution: { value: new THREE.Vector4() },
@@ -159,6 +195,7 @@ export default class Sketch {
     this.time += 0.05;
     this.materials.forEach(m=>{
       m.uniforms.time.value = this.time*0.5;
+      m.uniforms.uMouse.value = this.point;
     })
     requestAnimationFrame(this.render.bind(this));
     this.renderer.render(this.scene, this.camera);
