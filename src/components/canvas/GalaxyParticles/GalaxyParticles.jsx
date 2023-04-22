@@ -36,9 +36,10 @@ class Sketch {
     // var frustumSize = 10;
     // var aspect = window.innerWidth / window.innerHeight;
     // this.camera = new THREE.OrthographicCamera( frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, -1000, 1000 );
-    this.camera.position.set(0, 2, 2);
-    this.camerapos();
+    this.camera.position.set(1, 1.7, 2);
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.time = 0;
+    this.setupControls()
 
     this.materials =[]
     
@@ -85,6 +86,16 @@ class Sketch {
     // this.settings();
   }
 
+  setupControls() {
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.enableDamping = true;
+    this.controls.dampingFactor = 0.05;
+    this.controls.screenSpacePanning = false;
+    this.controls.minDistance = 1;
+    this.controls.maxDistance = 10;
+    this.controls.maxPolarAngle = Math.PI / 2;
+  }
+
   raycasterEvent() {
 
     let mesh = new THREE.Mesh(
@@ -119,13 +130,7 @@ class Sketch {
     });
   }
 
-  camerapos() {
-    this.nowcamerapos = () => {
-      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    };
-    
-    this.nowcamerapos();
-      }
+
 
   settings() {
     let that = this;
