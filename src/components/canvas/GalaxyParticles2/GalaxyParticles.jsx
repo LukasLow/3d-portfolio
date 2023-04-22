@@ -1,16 +1,13 @@
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { fragmentShader as fragment } from "./shader/fragmentShader.js";
-import { vertexShader as vertex } from "./shader/vertexShader.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-// import GUI from "lil-gui";
-// import gsap from "gsap";
-import particleTexture from './shader/particle.webp';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { fragmentShader as fragment } from "./fragmentShader.js";
+import { vertexShader as vertex } from "./vertexShader.js";
+import particleTexture from './particle.webp';
 
-function lerp(a,b,t){
-  return a*(1-t)+b*t;
-}
+// ...fügen Sie hier den restlichen Code aus Ihrem Sketch ein, aber entfernen Sie die Zeile "new Sketch({ dom: document.getElementById("container") });"
 
-export default class Sketch {
+class Sketch {
   constructor(options) {
     this.scene = new THREE.Scene();
 
@@ -220,8 +217,67 @@ export default class Sketch {
     requestAnimationFrame(this.render.bind(this));
     this.renderer.render(this.scene, this.camera);
   }
+
+  dispose() {
+    // Bereinigen von Geometrien
+    if (this.geometry) {
+      this.geometry.dispose();
+    }
+
+    // Bereinigen von Materialien
+    if (this.material) {
+      this.material.dispose();
+    }
+
+    // Bereinigen von Texturen
+    if (this.texture) {
+      this.texture.dispose();
+    }
+
+    // Bereinigen von WebGLRenderer
+    if (this.renderer) {
+      this.renderer.dispose();
+      // Entfernen des DOM-Elements, wenn es in den DOM eingefügt wurde
+      if (this.renderer.domElement.parentElement) {
+        this.renderer.domElement.parentElement.removeChild(this.renderer.domElement);
+      }
+    }
+
+    // Entfernen von Event-Listenern (z.B. window resize listener)
+    if (this.resizeListener) {
+      window.removeEventListener('resize', this.resizeListener);
+    }
+  }
 }
 
-new Sketch({
-  dom: document.getElementById("container")
-});
+function lerp(a,b,t){
+    return a*(1-t)+b*t;
+}
+
+// ... Der Sketch-Klassen-Code bleibt unverändert ...
+
+const GalaxyParticles = () => {
+  const containerRef = useRef();
+  let sketch;
+
+  useEffect(() => {
+    if (containerRef.current) {
+      sketch = new Sketch({ dom: containerRef.current });
+    }
+
+    //Bereinigungsfunktion für useEffect
+    return () => {
+      if (sketch) {
+        sketch.dispose(); // Implementieren Sie eine `dispose`-Methode in Ihrer Sketch-Klasse, um alle verwendeten Ressourcen zu bereinigen.
+      }
+    }
+    ;
+  }, [containerRef]);
+
+  return (
+    <div ref={containerRef} style={{ width: '100%', height: '100%' }}></div>
+  );
+};
+
+
+export default GalaxyParticles;
