@@ -2,6 +2,9 @@ import * as THREE from 'three';
 import { fragmentShader as fragment } from "./shader/fragmentShader.js";
 import { vertexShader as vertex } from "./shader/vertexShader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import GUI from "lil-gui";
+// import gsap from "gsap";
+import particleTexture from './shader/particle.webp';
 
 function lerp(a,b,t){
   return a*(1-t)+b;
@@ -17,7 +20,7 @@ export default class Sketch {
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
-    this.renderer.setClearColor(0xeeeeee, 1); 
+    this.renderer.setClearColor(0x000000, 1); 
     this.renderer.outputEncoding = THREE.sRGBEncoding;
 
     this.container.appendChild(this.renderer.domElement);
@@ -112,14 +115,13 @@ export default class Sketch {
       },
       side: THREE.DoubleSide,
       uniforms: {
-        time: { type: "f", value: 0 },
-        resolution: { type: "v4", value: new THREE.Vector4() },
-        uvRate1: {
-          value: new THREE.Vector2(1, 1)
-        }
+        uTexture: { value: new THREE.TextureLoader().load(particleTexture) },
+        time: { value: 0 },
+        resolution: { value: new THREE.Vector4() },
       },
       // wireframe: true,
-      // transparent: true,
+      transparent: true,
+      depthTest: false,
       vertexShader: vertex,
       fragmentShader: fragment
     });
