@@ -241,7 +241,7 @@ void main() {
 
   float particle_size = cnoise(pos*5.)*0.5+0.5;
 
-  vec3 world_pos = rotation3dY(time*0.3*(0.1*0.5*particle_size))*pos; // rotation speed
+  vec3 world_pos = rotation3dY(time*0.5*(0.1*0.5*particle_size))*pos; // rotation speed
 
   vec3 offset0 = getOffset(world_pos);
   vec3 offset = fbm_vec3((world_pos + offset0),0. ,0.); // curl noise
