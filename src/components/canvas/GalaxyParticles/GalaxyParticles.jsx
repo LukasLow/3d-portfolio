@@ -52,7 +52,51 @@ class Sketch {
     let random_amp = Math.random() * (1.1 - 0.9) + 0.9;
     let baseHue = Math.floor(Math.random() * 360); // Zufälliger Farbton von 0 bis 359
 
-    const colorPalette = ["#A9DF9C", "#F9E79F", "#F7DC6F", "#F5B7B1", "#D2B4DE"];
+    const colorPalette = [
+      "#A9DF9C", "#F9E79F", "#F7DC6F", "#F5B7B1", "#D2B4DE",
+      "#FF0000", "#8B0000", "#F08080", "#B22222", "#A52A2A",
+      "#CD5C5C", "#BC8F8F", "#800000", "#FFE4E1", "#FA8072",
+      "#FF6347", "#E9967A", "#FF7F50", "#FF4500", "#FFA07A",
+      "#A0522D", "#D2691E", "#8B4513", "#FFF5EE", "#FFDAB9",
+      "#F4A460", "#FAF0E6", "#CD853F", "#FFE4C4", "#FF8C00",
+      "#FAEBD7", "#D2B48C", "#DEB887", "#FFEBCD", "#FFDEAD",
+      "#FFEFD5", "#FFE4B5", "#FDF5E6", "#F5DEB3", "#FFA500",
+      "#FFFAF0", "#DAA520", "#B8860B", "#FFF8DC", "#FFD700",
+      "#F0E68C", "#FFFACD", "#EEE8AA", "#BDB76B", "#F5F5DC",
+      "#FAFAD2", "#FFFFF0", "#FFFFE0", "#FFFF00", "#808000",
+      "#9ACD32", "#6B8E23", "#556B2F", "#ADFF2F", "#7FFF00",
+      "#7CFC00", "#F0FFF0", "#90EE90", "#98FB98", "#8FBC8F",
+      "#32CD32", "#00FF00", "#228B22", "#008000", "#006400",
+      "#2E8B57", "#3CB371", "#F5FFFA", "#00FF7F", "#00FA9A",
+      "#7FFFD4", "#66CDAA", "#40E0D0", "#20B2AA", "#48D1CC",
+      "#F0FFFF", "#E0FFFF", "#AFEEEE", "#00FFFF", "#00FFFF",
+      "#2F4F4F", "#008B8B", "#008080", "#00CED1", "#5F9EA0",
+      "#B0E0E6", "#00BFFF", "#ADD8E6", "#87CEEB", "#87CEFA",
+      "#4682B4", "#F0F8FF", "#1E90FF", "#778899", "#708090",
+      "#B0C4DE", "#6495ED", "#4169E1", "#000080", "#191970",
+      "#0000CD", "#E6E6FA", "#F8F8FF", "#483D8B", "#27408B",
+      "#00008B", "#0000FF", "#1C1C1C", "#696969", "#DCDCDC",
+      "#7F7F7F", "#C0C0C0", "#A9A9A9", "#D3D3D3", "#BEBEBE",
+      "#F0F0F0", "#EDEDED", "#D6D6D6", "#FFFFFF", "#2F4F4F",
+      "#696969", "#708090", "#778899", "#191970", "#4169E1",
+      "#6495ED", "#B0C4DE", "#87CEEB", "#87CEFA", "#4682B4",
+      "#1E90FF", "#ADD8E6", "#00BFFF", "#5F9EA0", "#00CED1",
+      "#008B8B", "#008080", "#00FFFF", "#AFEEEE", "#E0FFFF",
+      "#F0FFFF", "#2F4F4F", "#66CDAA", "#7FFFD4", "#00FA9A",
+      "#20B2AA", "#00FF7F", "#F5FFFA", "#3CB371", "#48D1CC",
+      "#2E8B57", "#F0FFF0", "#7CFC00", "#7FFF00", "#ADFF2F",
+      "#98FB98", "#90EE90", "#32CD32", "#008000", "#228B22",
+      "#00FF00", "#F5F5DC", "#FFFF00", "#FFFFE0", "#FFFFF0",
+      "#FAFAD2", "#BDB76B", "#EEE8AA", "#F0E68C", "#FFD700",
+      "#FFF8DC", "#DAA520", "#B8860B", "#FFDEAD", "#FFEBCD",
+      "#DEB887", "#D2B48C", "#FAEBD7", "#FF8C00", "#FFE4C4",
+      "#A0522D", "#FFA07A", "#FF4500", "#E9967A", "#FF6347",
+      "#FFE4E1", "#FA8072", "#CD5C5C", "#BC8F8F", "#800000",
+      "#B22222", "#F08080", "#8B0000", "#FF0000", "#D2B4DE",
+      "#F5B7B1", "#F7DC6F", "#F9E79F", "#A9DF9C"
+    ];
+    
+    
 
     function getRandomColorFromPalette() {
       let randomIndex = Math.floor(Math.random() * colorPalette.length);
