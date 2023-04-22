@@ -1,5 +1,6 @@
 export const vertexShader = `
 uniform float time;
+uniform float size;
 varying vec2 vUv;
 varying vec3 vPosition;
 uniform vec2 pixels;
@@ -229,7 +230,7 @@ vec3 getOffset(vec3 p){
   vec3 offset = fbm_vec3(pos,0.5,0.);
 
 
-  return offset*0.3;
+  return offset*0.25;
 }
 
 void main() {
@@ -251,7 +252,7 @@ void main() {
 
   vec4 view_pos = viewMatrix*vec4(particle_position,1.);
 
-  view_pos.xyz += position*(0.01+0.1*particle_size); // scale the particles
+  view_pos.xyz += position*size*(0.01+0.1*particle_size); // scale the particles
 
   gl_Position = projectionMatrix * view_pos;
 }
