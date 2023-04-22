@@ -1,6 +1,7 @@
 export const vertexShader = `
 uniform float time;
 uniform float size;
+uniform vec3 uMouse;
 varying vec2 vUv;
 varying vec3 vPosition;
 uniform vec2 pixels;
@@ -248,8 +249,12 @@ void main() {
 
   vec3 particle_position = (modelMatrix*vec4(world_pos + offset + offset0,1.)).xyz;
   // gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(finalpos, 1.0);
+  // -----------------
+  float distanceToMouse = 1. -length(uMouse.xz - particle_position.xz);
 
+  particle_position.y += distanceToMouse * scaleFactor;
 
+  // -----------------
   vec4 view_pos = viewMatrix*vec4(particle_position,1.);
 
   view_pos.xyz += position*size*(0.01+0.1*particle_size); // scale the particles
