@@ -17,7 +17,7 @@ class Sketch {
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
-    this.renderer.setClearColor(0x000000, 1); 
+    this.renderer.setClearColor(0x000000, 0); 
     this.renderer.outputEncoding = THREE.sRGBEncoding;
 
     this.raycaster = new THREE.Raycaster();
