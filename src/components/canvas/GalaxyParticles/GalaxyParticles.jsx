@@ -53,7 +53,7 @@ class Sketch {
     let baseHue = Math.floor(Math.random() * 360); // Zufälliger Farbton von 0 bis 359
 
     let getRandomHSLColor = () => {
-      let hue = baseHue + Math.floor(Math.random() * 200 - 100); // Zufälliger Farbton im Bereich von +- 50 Grad
+      let hue = baseHue + Math.floor(Math.random() * 300 - 150); // Zufälliger Farbton im Bereich von +- 50 Grad
       let saturation = Math.floor(Math.random() * 26 + 74); // Zufällige Sättigung im Bereich von 74% bis 100%
       let lightness = Math.floor(Math.random() * 26 + 48); // Zufällige Helligkeit im Bereich von 48% bis 74%
       return `hsl(${hue}, ${saturation}%, ${lightness}%)`; // HSL-Farbe als Zeichenfolge zurückgeben
