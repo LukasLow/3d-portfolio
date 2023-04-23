@@ -180,7 +180,7 @@ class Sketch {
       const intersects = this.raycaster.intersectObjects([mesh]);
   
       if (intersects[0]) {
-        console.log(intersects[0].point);
+        // console.log(intersects[0].point);
         test.position.copy(intersects[0].point);
         this.point.copy*(intersects[0].point);
         this.materials.forEach((material) => {
