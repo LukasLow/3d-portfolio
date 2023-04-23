@@ -50,79 +50,17 @@ class Sketch {
     let random_max_radius = Math.random() * (2.0 - 1.4) + 1.4;
     let random_size = Math.random() * (1.3 - 0.8) + 0.8;
     let random_amp = Math.random() * (1.1 - 0.9) + 0.9;
-    let baseHue = Math.floor(Math.random() * 360); // Zufälliger Farbton von 0 bis 359
 
-    const colorPalette = [
-      "#A9DF9C", "#F9E79F", "#F7DC6F", "#F5B7B1", "#D2B4DE",
-      "#FF0000", "#8B0000", "#F08080", "#B22222", "#A52A2A",
-      "#CD5C5C", "#BC8F8F", "#800000", "#FFE4E1", "#FA8072",
-      "#FF6347", "#E9967A", "#FF7F50", "#FF4500", "#FFA07A",
-      "#A0522D", "#D2691E", "#8B4513", "#FFF5EE", "#FFDAB9",
-      "#F4A460", "#FAF0E6", "#CD853F", "#FFE4C4", "#FF8C00",
-      "#FAEBD7", "#D2B48C", "#DEB887", "#FFEBCD", "#FFDEAD",
-      "#FFEFD5", "#FFE4B5", "#FDF5E6", "#F5DEB3", "#FFA500",
-      "#FFFAF0", "#DAA520", "#B8860B", "#FFF8DC", "#FFD700",
-      "#F0E68C", "#FFFACD", "#EEE8AA", "#BDB76B", "#F5F5DC",
-      "#FAFAD2", "#FFFFF0", "#FFFFE0", "#FFFF00", "#808000",
-      "#9ACD32", "#6B8E23", "#556B2F", "#ADFF2F", "#7FFF00",
-      "#7CFC00", "#F0FFF0", "#90EE90", "#98FB98", "#8FBC8F",
-      "#32CD32", "#00FF00", "#228B22", "#008000", "#006400",
-      "#2E8B57", "#3CB371", "#F5FFFA", "#00FF7F", "#00FA9A",
-      "#7FFFD4", "#66CDAA", "#40E0D0", "#20B2AA", "#48D1CC",
-      "#F0FFFF", "#E0FFFF", "#AFEEEE", "#00FFFF", "#00FFFF",
-      "#2F4F4F", "#008B8B", "#008080", "#00CED1", "#5F9EA0",
-      "#B0E0E6", "#00BFFF", "#ADD8E6", "#87CEEB", "#87CEFA",
-      "#4682B4", "#F0F8FF", "#1E90FF", "#778899", "#708090",
-      "#B0C4DE", "#6495ED", "#4169E1", "#000080", "#191970",
-      "#0000CD", "#E6E6FA", "#F8F8FF", "#483D8B", "#27408B",
-      "#00008B", "#0000FF", "#1C1C1C", "#696969", "#DCDCDC",
-      "#7F7F7F", "#C0C0C0", "#A9A9A9", "#D3D3D3", "#BEBEBE",
-      "#F0F0F0", "#EDEDED", "#D6D6D6", "#FFFFFF", "#2F4F4F",
-      "#696969", "#708090", "#778899", "#191970", "#4169E1",
-      "#6495ED", "#B0C4DE", "#87CEEB", "#87CEFA", "#4682B4",
-      "#1E90FF", "#ADD8E6", "#00BFFF", "#5F9EA0", "#00CED1",
-      "#008B8B", "#008080", "#00FFFF", "#AFEEEE", "#E0FFFF",
-      "#F0FFFF", "#2F4F4F", "#66CDAA", "#7FFFD4", "#00FA9A",
-      "#20B2AA", "#00FF7F", "#F5FFFA", "#3CB371", "#48D1CC",
-      "#2E8B57", "#F0FFF0", "#7CFC00", "#7FFF00", "#ADFF2F",
-      "#98FB98", "#90EE90", "#32CD32", "#008000", "#228B22",
-      "#00FF00", "#F5F5DC", "#FFFF00", "#FFFFE0", "#FFFFF0",
-      "#FAFAD2", "#BDB76B", "#EEE8AA", "#F0E68C", "#FFD700",
-      "#FFF8DC", "#DAA520", "#B8860B", "#FFDEAD", "#FFEBCD",
-      "#DEB887", "#D2B48C", "#FAEBD7", "#FF8C00", "#FFE4C4",
-      "#A0522D", "#FFA07A", "#FF4500", "#E9967A", "#FF6347",
-      "#FFE4E1", "#FA8072", "#CD5C5C", "#BC8F8F", "#800000",
-      "#B22222", "#F08080", "#8B0000", "#FF0000", "#D2B4DE",
-      "#F5B7B1", "#F7DC6F", "#F9E79F", "#A9DF9C"
-    ];
     
-    function rgbToHsv(r, g, b) {
-      r /= 255, g /= 255, b /= 255;
-      let max = Math.max(r, g, b), min = Math.min(r, g, b);
-      let h, s, v = max;
-      let d = max - min;
-      s = max === 0 ? 0 : d / max;
-      if (max === min) {
-        h = 0; // achromatic
-      } else {
-        switch (max) {
-          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-          case g: h = (b - r) / d + 2; break;
-          case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-      }
-      return [h, s, v];
-    };
-
     function hsvToRgb(h, s, v) {
-      let r, g, b;
-      let i = Math.floor(h * 6);
-      let f = h * 6 - i;
+      let h_i = Math.floor(h * 6);
+      let f = h * 6 - h_i;
       let p = v * (1 - s);
       let q = v * (1 - f * s);
       let t = v * (1 - (1 - f) * s);
-      switch (i % 6) {
+      let r, g, b;
+    
+      switch (h_i) {
         case 0: r = v, g = t, b = p; break;
         case 1: r = q, g = v, b = p; break;
         case 2: r = p, g = v, b = t; break;
@@ -130,64 +68,91 @@ class Sketch {
         case 4: r = t, g = p, b = v; break;
         case 5: r = v, g = p, b = q; break;
       }
-      return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-    };
-
-    function rgbToHex(r, g, b) {
-      return "#" + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
-    };   
-
-    function generateSimilarColors(baseColorHex, distance) {
-      let baseColorRgb = parseInt(baseColorHex.slice(1), 16);
-      let r = (baseColorRgb >> 16) & 255;
-      let g = (baseColorRgb >> 8) & 255;
-      let b = baseColorRgb & 255;
     
-      let baseHsv = rgbToHsv(r, g, b);
-      let newH = (baseHsv[0] + (Math.random() - 0.5) * (distance / 360)) % 1;
-      let newS = Math.min(Math.max(baseHsv[1] + (Math.random() - 0.5) * (distance / 100), 0), 1);
-      let newV = Math.min(Math.max(baseHsv[2] + (Math.random() - 0.5) * (distance / 100), 0), 1);
-      
-      return rgbToHex(...hsvToRgb(newH, newS, newV));
-    };
-
-    function randomHexColor() {
-      return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+      return [Math.floor(r * 256), Math.floor(g * 256), Math.floor(b * 256)];
     };
     
+    function generateRandomColors(n) {
+      const golden_ratio_conjugate = 0.618033988749895;
+      let h = Math.random();
+      let colors = [];
+    
+      for (let i = 0; i < n; i++) {
+        h += golden_ratio_conjugate;
+        h %= 1;
+        colors.push(hsvToRgb(h, 0.5, 0.95));
+      }
+    
+      return colors;
+    };
+    
+    function rgbToHex([r, g, b]) {
+      return "#" + r.toString(16).padStart(2, "0") + g.toString(16).padStart(2, "0") + b.toString(16).padStart(2, "0");
+    };
+    
+    function generateRandomColorsHex(n) {
+      return generateRandomColors(n).map(rgbToHex);
+    };
+    
+    function getRandomColorFromPalette(palette) {
+      return palette[Math.floor(Math.random() * palette.length)];
+    }
+    
+    const colors = generateRandomColorsHex(26);
+    console.log(colors);
+    
+    const randomColors = [];
+    for (let i = 0; i < 4; i++) {
+      randomColors.push(getRandomColorFromPalette(colors));
+    }
+    
+    const randomColor01 = randomColors[0];
+    console.log(randomColor01);
+    const randomColor02 = randomColors[1];
+    console.log(randomColor02);
+    const randomColor03 = randomColors[2];
+    console.log(randomColor03);
+    const randomColor04 = randomColors[3];
+    console.log(randomColor04);
+    // const randomColor05 = randomColors[4];
+    // const randomColor06 = randomColors[5];
+    // const randomColor07 = randomColors[6];
+    // const randomColor08 = randomColors[7];
+    // const randomColor09 = randomColors[8];
+    // const randomColor10 = randomColors[9];
+    // const randomColor11 = randomColors[10];
+    // const randomColor12 = randomColors[11];
     
 
-    let baseColorHex = randomHexColor(); // Die Basisfarbe, um ähnliche Farben zu generieren
-    let distance = 250; // Der maximale Farbabstand von der Basisfarbe
-    
-    let similarColors = generateSimilarColors(baseColorHex, distance);
-    console.log(similarColors);
+
+
+
 
 
     let opts = [
       {
-        color: generateSimilarColors(baseColorHex, distance),
+        color: randomColor01,
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: generateSimilarColors(baseColorHex, distance),
+        color: randomColor02,
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: generateSimilarColors(baseColorHex, distance),
+        color: randomColor03,
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: generateSimilarColors(baseColorHex, distance),
+        color: randomColor04,
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
