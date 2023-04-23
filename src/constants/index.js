@@ -82,6 +82,24 @@ const services = [
     icon: creator,
   },
 ];
+const sociallinks = [
+  {
+    title: "Student",
+    image: web,
+  },
+  {
+    title: "Data Science",
+    image: mobile,
+  },
+  {
+    title: "Physics",
+    image: backend,
+  },
+  {
+    title: "Personal Growth",
+    image: creator,
+  },
+];
 
 const technologies = [
   {
@@ -332,4 +350,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, education, experiences, testimonials, projects };
+export { services, technologies, education, experiences, testimonials, projects, sociallinks };
