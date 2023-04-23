@@ -47,7 +47,6 @@ const ProjectCard = ({
         >
         <div className="relative w-full h-[230px]">
           <img
-            onClick={() => window.open(website_link, "_blank")}
             src={image}
             alt="project_image"
             className="w-full h-full object-cover rounded-2xl"
