@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
 
@@ -18,19 +18,24 @@ const ProjectCard = ({
 }) => {
   const [showPopup, setShowPopup] = useState(false);
 
+  const [tiltEnabled, setTiltEnabled] = useState(true);
+
   const handleCardClick = () => {
     setShowPopup(true);
+    setTiltEnabled(false);
   };
-
+  
   const handlePopupClose = () => {
     setShowPopup(false);
+    setTiltEnabled(true);
   };
+  
 
   return (
     <div className="relative">
       <motion.div
         variants={fadeIn("up", "spring", index * 0.5, 0.75)}
-        className="cursor-pointer"
+        className="cursor-pointer z-10"
         onClick={handleCardClick}
       >
         <Tilt
@@ -38,9 +43,11 @@ const ProjectCard = ({
             max: 45,
             scale: 1,
             speed: 450,
+            enabled: tiltEnabled,
           }}
           className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex flex-col justify-center"
-        >
+          >
+
           <div className="relative w-full h-[230px]">
             <img
               src={image}
@@ -89,17 +96,17 @@ const ProjectCard = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
-          onClick={handlePopupClose}
+          className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-100"
         >
           <div
-            className="fixed top-0 left-0 w-full h-full bg-black opacity-60 z-40"
+            className="fixed top-0 left-0 w-full h-full bg-black opacity-60 z-10"
             onClick={handlePopupClose}
           />
-  
-          <div className="bg-black p-8 rounded-xl z-51 max-w-full">
+          <div className="bg-black p-8 rounded-xl z-50 max-w-full">
             <h2 className={`${styles.sectionHeadText}`}>{name}</h2>
-            <p className="mt-3 text-secondary text-[17px] overflow-y-scroll max-h-60">{description}</p>
+            <div className="mt-3 max-h-[60vh] overflow-y-scroll pr-4">
+              <p className="text-secondary text-[17px]">{description}</p>
+            </div>
             <div className="mt-4 flex flex-wrap gap-2 justify-center">
               {tags.map((tag) => (
                 <p
@@ -113,6 +120,7 @@ const ProjectCard = ({
           </div>
         </motion.div>
       )}
+              
     </div>
   );
 };
