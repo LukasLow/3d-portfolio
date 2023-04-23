@@ -11,8 +11,8 @@ export const Sociallinks = () => {
         variants={slideIn("left", "tween", 0.2, 1)}
         className="bg-black-100 p-8 rounded-2xl"
       >
-        <p className={styles.sectionSubText}>Feel free to contact me</p>
-        <h3 className={styles.sectionHeadText}>Lets Talk.</h3>
+        <p className={styles.sectionSubText}>You can find me on</p>
+        <h3 className={styles.sectionHeadText}>The Web</h3>
 
         {sociallinks.map((link, index) => (
           <a
