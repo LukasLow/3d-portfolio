@@ -17,6 +17,7 @@ const ProjectCard = ({
   source_code_link,
   website_link,
 }) => {
+  console.log(website_link);
   const [showPopup, setShowPopup] = useState(false);
 
   const handleCardClick = () => {
@@ -44,41 +45,42 @@ const ProjectCard = ({
           options={tiltOptions}
           className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex flex-col justify-center"
         >
-          <div className="relative w-full h-[230px]">
-            <img
-              onClick={() => window.open(website_link, "_blank")}
-              src={image}
-              alt="project_image"
-              className="w-full h-full object-cover rounded-2xl"
-            />
-  
-            <div className="absolute inset-0 flex justify-start m-3 card-img_hover">
-              <div
-                onClick={() => window.open(website_link, "_blank")}
-                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-              >
-                <img
-                  src={website}
-                  alt="webseite"
-                  className="w-1/2 h-1/2 object-contain"
-                />
-              </div>
+        <div className="relative w-full h-[230px]">
+          <img
+            onClick={() => window.open(website_link, "_blank")}
+            src={image}
+            alt="project_image"
+            className="w-full h-full object-cover rounded-2xl"
+          />
+
+          <div className="absolute inset-0 flex justify-between m-3 card-img_hover">
+            <div
+              onClick={() => window.open(source_code_link, "_blank")}
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              style={{ zIndex: 1 }}
+            >
+              <img
+                src={github}
+                alt="source code"
+                className="w-1/2 h-1/2 object-contain"
+              />
             </div>
 
-            <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-              <div
-                onClick={() => window.open(source_code_link, "_blank")}
-                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-              >
-                <img
-                  src={github}
-                  alt="source code"
-                  className="w-1/2 h-1/2 object-contain"
-                />
-              </div>
+            <div
+              onClick={() => window.open(website_link, "_blank")}
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              style={{ zIndex: 1 }}
+            >
+              <img
+                src={website}
+                alt="webseite"
+                className="w-1/2 h-1/2 object-contain"
+              />
             </div>
           </div>
-  
+        </div>
+
+
           <div className="mt-5 text-center" onClick={handleCardClick}>
             <h3 className="text-white font-bold text-[24px]">{name}</h3>
             <div className="mt-4 flex flex-wrap gap-2 justify-center">
