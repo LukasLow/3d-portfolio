@@ -328,7 +328,7 @@ const projects = [
     ],
     image: airline,
     source_code_link: "https://github.com/sosonjaa/brain_storm",
-    website_link: "https://www.google.com",
+    website_link: "https://airline.lowsky.eu",
   },
 ];
 
