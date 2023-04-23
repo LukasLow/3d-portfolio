@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { github } from "../assets";
+import { github, website } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
@@ -15,46 +15,56 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  website_link,
 }) => {
   const [showPopup, setShowPopup] = useState(false);
 
-  const [tiltEnabled, setTiltEnabled] = useState(true);
-
   const handleCardClick = () => {
     setShowPopup(true);
-    setTiltEnabled(false);
   };
-  
+
   const handlePopupClose = () => {
     setShowPopup(false);
-    setTiltEnabled(true);
   };
-  
+
+  const tiltOptions = {
+    max: 45,
+    scale: 1,
+    speed: 450,
+    disableAxis: showPopup ? "X Y" : "",
+  };
 
   return (
     <div className="relative">
       <motion.div
         variants={fadeIn("up", "spring", index * 0.5, 0.75)}
-        className="cursor-pointer z-10"
-        onClick={handleCardClick}
+        className="cursor-pointer"
       >
         <Tilt
-          options={{
-            max: 45,
-            scale: 1,
-            speed: 450,
-            enabled: tiltEnabled,
-          }}
+          options={tiltOptions}
           className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex flex-col justify-center"
-          >
-
+        >
           <div className="relative w-full h-[230px]">
             <img
+              onClick={() => window.open(website_link, "_blank")}
               src={image}
               alt="project_image"
               className="w-full h-full object-cover rounded-2xl"
             />
   
+            <div className="absolute inset-0 flex justify-start m-3 card-img_hover">
+              <div
+                onClick={() => window.open(website_link, "_blank")}
+                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              >
+                <img
+                  src={website}
+                  alt="webseite"
+                  className="w-1/2 h-1/2 object-contain"
+                />
+              </div>
+            </div>
+
             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
               <div
                 onClick={() => window.open(source_code_link, "_blank")}
@@ -69,7 +79,7 @@ const ProjectCard = ({
             </div>
           </div>
   
-          <div className="mt-5 text-center">
+          <div className="mt-5 text-center" onClick={handleCardClick}>
             <h3 className="text-white font-bold text-[24px]">{name}</h3>
             <div className="mt-4 flex flex-wrap gap-2 justify-center">
               {tags.map((tag) => (
@@ -117,6 +127,12 @@ const ProjectCard = ({
                 </p>
               ))}
             </div>
+            <button
+              onClick={handlePopupClose}
+              className="w-10 h-10 bg-primary flex items-center justify-center text-white font-bold text-xl rounded-full mt-4 mx-auto"
+            >
+              Close
+            </button>
           </div>
         </motion.div>
       )}
@@ -160,4 +176,4 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, "works");

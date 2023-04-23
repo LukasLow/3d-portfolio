@@ -15,8 +15,12 @@ const App = () => {
           <About />
           <Education />
           <Experience />
-          <Works />
-          <Tech />
+          <section className="">
+            <Works />
+          </section>
+          <section className="z-10">
+            <Tech />
+          </section>
           <Contact />
         </div>
           <StarsCanvas />
