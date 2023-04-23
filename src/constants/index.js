@@ -1,4 +1,6 @@
 import {
+  linkedin,
+  twitter,
   flask,
   github_logo,
   sql,
@@ -84,21 +86,18 @@ const services = [
 ];
 const sociallinks = [
   {
-    title: "Student",
-    image: web,
+    platform: "Github",
+    url: "https://github.com/LukasLow",
+    logo: github_logo,
+    username: "LukasLow",
   },
   {
-    title: "Data Science",
-    image: mobile,
+    platform: "Linkedin",
+    url: "https://www.linkedin.com/in/lukas-lowschizky-17b289269/?originalSubdomain=de",
+    logo: linkedin,
+    username: "Lukas",
   },
-  {
-    title: "Physics",
-    image: backend,
-  },
-  {
-    title: "Personal Growth",
-    image: creator,
-  },
+
 ];
 
 const technologies = [

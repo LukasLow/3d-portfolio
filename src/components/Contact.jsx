@@ -14,7 +14,7 @@ const Contact = () => {
       <div className="w-full max-w-lg">
         <ContactForm />
       </div>
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-lg">
         <Sociallinks />
       </div>
     </div>

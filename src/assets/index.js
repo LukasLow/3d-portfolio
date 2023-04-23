@@ -49,7 +49,12 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+import twitter from "./socials/titter.png";
+import linkedin from "./socials/linkedin.png";
+
 export {
+  linkedin,
+  twitter,
   website,
   flask,
   github_logo,
