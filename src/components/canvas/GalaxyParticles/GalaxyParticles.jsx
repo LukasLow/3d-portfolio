@@ -96,39 +96,98 @@ class Sketch {
       "#F5B7B1", "#F7DC6F", "#F9E79F", "#A9DF9C"
     ];
     
+    function rgbToHsv(r, g, b) {
+      r /= 255, g /= 255, b /= 255;
+      let max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h, s, v = max;
+      let d = max - min;
+      s = max === 0 ? 0 : d / max;
+      if (max === min) {
+        h = 0; // achromatic
+      } else {
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return [h, s, v];
+    };
+
+    function hsvToRgb(h, s, v) {
+      let r, g, b;
+      let i = Math.floor(h * 6);
+      let f = h * 6 - i;
+      let p = v * (1 - s);
+      let q = v * (1 - f * s);
+      let t = v * (1 - (1 - f) * s);
+      switch (i % 6) {
+        case 0: r = v, g = t, b = p; break;
+        case 1: r = q, g = v, b = p; break;
+        case 2: r = p, g = v, b = t; break;
+        case 3: r = p, g = q, b = v; break;
+        case 4: r = t, g = p, b = v; break;
+        case 5: r = v, g = p, b = q; break;
+      }
+      return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    };
+
+    function rgbToHex(r, g, b) {
+      return "#" + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+    };   
+
+    function generateSimilarColors(baseColorHex, distance) {
+      let baseColorRgb = parseInt(baseColorHex.slice(1), 16);
+      let r = (baseColorRgb >> 16) & 255;
+      let g = (baseColorRgb >> 8) & 255;
+      let b = baseColorRgb & 255;
+    
+      let baseHsv = rgbToHsv(r, g, b);
+      let newH = (baseHsv[0] + (Math.random() - 0.5) * (distance / 360)) % 1;
+      let newS = Math.min(Math.max(baseHsv[1] + (Math.random() - 0.5) * (distance / 100), 0), 1);
+      let newV = Math.min(Math.max(baseHsv[2] + (Math.random() - 0.5) * (distance / 100), 0), 1);
+      
+      return rgbToHex(...hsvToRgb(newH, newS, newV));
+    };
+
+    function randomHexColor() {
+      return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+    };
+    
     
 
-    function getRandomColorFromPalette() {
-      let randomIndex = Math.floor(Math.random() * colorPalette.length);
-      return colorPalette[randomIndex];
-    }
+    let baseColorHex = randomHexColor(); // Die Basisfarbe, um ähnliche Farben zu generieren
+    let distance = 250; // Der maximale Farbabstand von der Basisfarbe
     
+    let similarColors = generateSimilarColors(baseColorHex, distance);
+    console.log(similarColors);
 
 
     let opts = [
       {
-        color: getRandomColorFromPalette(),
+        color: generateSimilarColors(baseColorHex, distance),
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: getRandomColorFromPalette(),
+        color: generateSimilarColors(baseColorHex, distance),
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: getRandomColorFromPalette(),
+        color: generateSimilarColors(baseColorHex, distance),
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
         amp: random_amp,
       },
       {
-        color: getRandomColorFromPalette(),
+        color: generateSimilarColors(baseColorHex, distance),
         min_radius: random_min_radius,
         max_radius: random_max_radius,
         size: random_size,
