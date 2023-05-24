@@ -132,7 +132,7 @@ const ProjectCard = ({
               onClick={handlePopupClose}
               className="w-10 h-10 bg-primary flex items-center justify-center text-white font-bold text-xl rounded-full mt-4 mx-auto"
             >
-              Close
+              X
             </button>
           </div>
         </motion.div>
