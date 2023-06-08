@@ -1,0 +1,5 @@
+{
+    "rewrites": [
+      { "source": "/Phy-DS_ParticlePhysics", "destination": "/upload/Phy-for-DS_ParticlePhysics.html" }
+    ]
+  }
