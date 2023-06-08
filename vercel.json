@@ -1,5 +1,7 @@
 {
     "rewrites": [
-      { "source": "/Phy-DS_ParticlePhysics", "destination": "/upload/Phy-for-DS_ParticlePhysics.html" }
-    ]
+      { "source": "/forStan", "destination": "/upload/Phy-for-DS_ParticlePhysics.html" },
+      { "source": "/Github", "destination": "https://github.com/LukasLow" },
+      { "source": "/about", "destination": "https://example.com/about" }
+      ]
   }
