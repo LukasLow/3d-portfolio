@@ -173,7 +173,18 @@ const education = [
     company_name: "University of Goettingen",
     icon: uni_goe,
     iconBg: "#E6DEDD",
-    date: "October 2022 - Present",
+    date: "October 2023 - Present",
+    location: "Göttingen, Germany",
+    points: [
+      "Student of Physics.",
+    ],
+  },
+  {
+    title: "Bachelor of Science",
+    company_name: "University of Goettingen",
+    icon: uni_goe,
+    iconBg: "#E6DEDD",
+    date: "October 2022 - Septemper 2023",
     location: "Göttingen, Germany",
     points: [
       "Student of Applied Data Science.",
