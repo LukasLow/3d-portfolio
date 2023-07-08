@@ -176,7 +176,7 @@ const education = [
     date: "October 2023 - Present",
     location: "Göttingen, Germany",
     points: [
-      "Student of Physics.",
+      "Student of Physics",
     ],
   },
   {
@@ -187,7 +187,7 @@ const education = [
     date: "October 2022 - Septemper 2023",
     location: "Göttingen, Germany",
     points: [
-      "Student of Applied Data Science.",
+      "Student of Applied Data Science",
     ],
   },
   {
