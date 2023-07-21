@@ -9,7 +9,7 @@ import Feedbacks from "./Feedbacks";
 import Contact from "./Contact";
 import CanvasLoader from "./Loader";
 import Education from './Education';
-
+import Publica from './Pub';
 
 export {
   Hero,
@@ -19,6 +19,7 @@ export {
   Education,
   Experience,
   Works,
+  Publica,
   Feedbacks,
   Contact,
   CanvasLoader,

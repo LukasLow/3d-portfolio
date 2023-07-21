@@ -1,6 +1,6 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 
-import { About, Contact, Education, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { About, Contact, Education, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas, Publica } from "./components";
 
 const App = () => {
   return (
@@ -17,6 +17,7 @@ const App = () => {
           <Experience />
           <section className="">
             <Works />
+            <Publica />
           </section>
           <section className="z-10">
             <Tech />

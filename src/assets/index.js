@@ -51,8 +51,10 @@ import tripguide from "./tripguide.png";
 
 import twitter from "./socials/titter.png";
 import linkedin from "./socials/linkedin.png";
+import LS from "./LS.png";
 
 export {
+  LS,
   linkedin,
   twitter,
   website,
