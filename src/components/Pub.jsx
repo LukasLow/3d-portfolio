@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
+import ReactDOM from "react-dom";
 
 import { styles } from "../styles";
 import { github, website } from "../assets";
@@ -17,7 +18,6 @@ const PublicsCard = ({
   source_code_link,
   website_link,
 }) => {
-  console.log(website_link);
   const [showPopup, setShowPopup] = useState(false);
 
   const handleCardClick = () => {
@@ -33,6 +33,42 @@ const PublicsCard = ({
     scale: 1,
     speed: 450,
     disableAxis: showPopup ? "X Y" : "",
+  };
+
+  const renderPopup = () => {
+    if (!showPopup) return null;
+
+    return ReactDOM.createPortal(
+      <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-100">
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black opacity-60 z-10"
+          onClick={handlePopupClose}
+        />
+        <div className="bg-black p-8 rounded-xl z-50 max-w-full overflow-y-scroll">
+          <h2 className={`${styles.sectionHeadText}`}>{name}</h2>
+          <div className="mt-3 max-h-[60vh] pr-4">
+            <p className="text-secondary text-[17px]">{description}</p>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2 justify-center">
+            {tags.map((tag) => (
+              <p
+                key={`${name}-${tag.name}`}
+                className={`text-[14px] ${tag.color}`}
+              >
+                #{tag.name}
+              </p>
+            ))}
+          </div>
+          <button
+            onClick={handlePopupClose}
+            className="w-10 h-10 bg-primary flex items-center justify-center text-white font-bold text-xl rounded-full mt-4 mx-auto"
+          >
+            X
+          </button>
+        </div>
+      </div>,
+      document.body
+    );
   };
 
   return (
@@ -105,41 +141,7 @@ const PublicsCard = ({
         </Tilt>
       </motion.div>
 
-      {showPopup && (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-100"
-        >
-            <div
-            className="fixed top-0 left-0 w-full h-full bg-black opacity-60 z-10"
-            onClick={handlePopupClose}
-            />
-            <div className="bg-black p-8 rounded-xl z-50 max-w-full overflow-y-scroll">
-            <h2 className={`${styles.sectionHeadText}`}>{name}</h2>
-            <div className="mt-3 max-h-[60vh] pr-4">
-                <p className="text-secondary text-[17px]">{description}</p>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2 justify-center">
-                {tags.map((tag) => (
-                <p
-                    key={`${name}-${tag.name}`}
-                    className={`text-[14px] ${tag.color}`}
-                >
-                    #{tag.name}
-                </p>
-                ))}
-            </div>
-            <button
-                onClick={handlePopupClose}
-                className="w-10 h-10 bg-primary flex items-center justify-center text-white font-bold text-xl rounded-full mt-4 mx-auto"
-            >
-                X
-            </button>
-            </div>
-        </motion.div>
-        )}
+      {renderPopup()}
     </div>
   );
 };
