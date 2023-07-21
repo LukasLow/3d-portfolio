@@ -158,12 +158,10 @@ const Publica = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla Bla
-          Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla
-          Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla Bla
-          Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla
-          Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla
-          Bla Bla BlaBla Bla BlaBla Bla BlaBla Bla BlaBla Bla
+          Here, I showcase my academic work, including my essays, research papers, and other 
+          projects related to my studies. These assignments reflect my analytical thinking, research 
+          skills, and ability to articulate my thoughts effectively. I have covered a wide range of 
+          topics, including Data Science and Physics.
         </motion.p>
       </div>
 
