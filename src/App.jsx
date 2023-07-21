@@ -19,7 +19,7 @@ const App = () => {
             <Works />
             <Publica />
           </section>
-          <section className="z-10">
+          <section className="z-0">
             <Tech />
           </section>
           <Contact />
