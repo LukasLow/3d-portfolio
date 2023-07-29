@@ -5,8 +5,6 @@ import { fragmentShader as fragment } from "./fragmentShader.js";
 import { vertexShader as vertex } from "./vertexShader.js";
 import particleTexture from './particle.webp';
 
-// ...fügen Sie hier den restlichen Code aus Ihrem Sketch ein, aber entfernen Sie die Zeile "new Sketch({ dom: document.getElementById("container") });"
-
 class Sketch {
   constructor(options) {
     this.scene = new THREE.Scene();
@@ -47,8 +45,8 @@ class Sketch {
     
     //let randomNumber = Math.random() * (max - min) + min;
     let random_min_radius = Math.random() * (0.4 - 0.3) + 0.3;
-    let random_max_radius = Math.random() * (2.0 - 1.4) + 1.4;
-    let random_size = Math.random() * (1.3 - 0.8) + 0.8;
+    let random_max_radius = Math.random() * (1.8 - 1.4) + 1.4;
+    let random_size = Math.random() * (1.4 - 0.8) + 0.8;
     let random_amp = Math.random() * (1.1 - 0.9) + 0.9;
 
     
@@ -239,7 +237,7 @@ class Sketch {
 
   addObjects(opts) {
     let that = this;
-    let count = 10000;
+    let count = 4000;
     let min_radius = opts.min_radius;
     let max_radius = opts.max_radius;
     let particlegeo = new THREE.PlaneGeometry(1,1);

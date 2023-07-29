@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { sociallinks } from "../constants";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
+import { EarthCanvas } from "./canvas";
+
 
 export const Sociallinks = () => {
   return (
@@ -37,12 +39,14 @@ export const Sociallinks = () => {
         ))}
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
-        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+        className="xl:flex-1 xl:h-[3500px] md:h-[550px] h-[350px] overflow-visible"
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
       >
-        {/* <EarthCanvas scale={2.5} /> */}
-      </motion.div>
+        <EarthCanvas scale={2.8} className="xl:flex-1 xl:h-[3500px] md:h-[550px] h-[350px]" />
+      </motion.div> */}
+
     </div>
   );
 };
