@@ -79,7 +79,7 @@ const PublicsCard = ({
       >
         <Tilt
           options={tiltOptions}
-          className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex flex-col justify-center"
+          className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-[100%] flex flex-col justify-center"
         >
           <div className="relative w-full h-[430px]">
             <img
