@@ -255,8 +255,8 @@ const experiences = [
     date: "09/2023 - today",
     location: "Göttingen, Germany",
     points: [
-      // "Responsible for",
-      // "Entered",
+      "Member of the Working Group “Application and Information Systems” (AG A)",
+      "Assistant in the Apple Support Centre for the University Goettingen, Max Planck Society and the GWDG",
       // "Sorted",
     ],
   },
