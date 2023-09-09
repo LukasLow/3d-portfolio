@@ -45,6 +45,7 @@ import {
   carrent,
   jobit,
   tripguide,
+  gwdg,
   LS,
 } from "../assets";
 
@@ -176,6 +177,7 @@ const education = [
   {
     title: "Bachelor of Science",
     company_name: "University of Goettingen",
+    link: "https://www.uni-goettingen.de/de/594378.html",
     icon: uni_goe,
     iconBg: "#E6DEDD",
     date: "October 2023 - Present",
@@ -187,6 +189,7 @@ const education = [
   {
     title: "Bachelor of Science",
     company_name: "University of Goettingen",
+    link: "https://www.uni-goettingen.de/de/640719.html",
     icon: uni_goe,
     iconBg: "#E6DEDD",
     date: "October 2022 - Septemper 2023",
@@ -198,6 +201,7 @@ const education = [
   {
     title: "Fachhochschulreife",
     company_name: "Berufskolleg Schloß Neuhaus",
+    link: "https://www.bksn.de/vollzeitbildungsgaenge/hoehere-handelsschule/",
     icon: BKSN,
     iconBg: "#383E56",
     date: "2020-2022",
@@ -242,6 +246,20 @@ const education = [
 ];
 
 const experiences = [
+  {
+    title: "Student Assistant",
+    company_name: "GWDG",
+    link: "https://gwdg.de",
+    icon: gwdg,
+    iconBg: "#E6DEDD",
+    date: "09/2023 - today",
+    location: "Göttingen, Germany",
+    points: [
+      // "Responsible for",
+      // "Entered",
+      // "Sorted",
+    ],
+  },
   {
     title: "Internship",
     company_name: "St. Vincenz Hospital",

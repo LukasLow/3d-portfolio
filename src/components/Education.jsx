@@ -30,11 +30,13 @@ const ExperienceCard = ({ experience }) => {
       iconStyle={{ background: experience.iconBg }}
       icon={
         <div className='flex justify-center items-center w-full h-full'>
-          <img
-            src={experience.icon}
-            alt={experience.company_name}
-            className='w-[90%] h-[90%] object-contain z-0 rounded-full overflow-hidden'
-          />
+          <a href={experience.link}>
+            <img
+              src={experience.icon}
+              alt={experience.company_name}
+              className='w-[90%] h-[90%] object-contain z-0 rounded-full overflow-hidden'
+            />
+          </a>
         </div>
       }
     >
@@ -44,7 +46,9 @@ const ExperienceCard = ({ experience }) => {
           className='text-secondary text-[16px] font-semibold'
           style={{ margin: 0 }}
         >
-          {experience.company_name}
+          <a href={experience.link}>
+            {experience.company_name}
+          </a>
         </p>
       </div>
 

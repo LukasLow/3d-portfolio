@@ -38,6 +38,7 @@ import chlopus from "./company/chlopus.png";
 import vlh from "./company/vlh-.png";
 import nrw from "./company/nrw+.png";
 import leuchtturm from "./company/leuchtturmbrilon+.png";
+import gwdg from "./company/gwdg.png";
 
 import Grundschule from "./schools/grundschule+.png";
 import Hauptschule from "./schools/Hauptschule_Georg+.png";
@@ -101,5 +102,6 @@ export {
   tesla,
   carrent,
   jobit,
+  gwdg,
   tripguide,
 };
