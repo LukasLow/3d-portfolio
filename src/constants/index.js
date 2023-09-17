@@ -196,6 +196,7 @@ const education = [
     location: "Göttingen, Germany",
     points: [
       "Student of Applied Data Science",
+      "switched to Physics",
     ],
   },
   {
