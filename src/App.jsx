@@ -17,7 +17,7 @@ const App = () => {
           <Experience />
           <section className="">
             <Works />
-            <Publica />
+            {/* <Publica /> */}
           </section>
           <section className="z-0">
             <Tech />
