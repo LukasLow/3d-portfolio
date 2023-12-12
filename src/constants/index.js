@@ -1,4 +1,5 @@
 import {
+  gitlab,
   linkedin,
   twitter,
   flask,
@@ -95,6 +96,12 @@ const sociallinks = [
     platform: "Github",
     url: "https://github.com/LukasLow",
     logo: github_logo,
+    username: "LukasLow",
+  },
+  {
+    platform: "Gitlab",
+    url: "https://gitlab.com/LukasLow",
+    logo: gitlab,
     username: "LukasLow",
   },
   {
