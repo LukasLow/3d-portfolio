@@ -6,4 +6,4 @@ pages_build_output_dir = "dist"
 [build]
 command = "yarn build"
 [build.upload]
-dir = "public"  # Der Ordner, der die build-Ausgabe enthält
+dir = "dist"  # Der Ordner, der die build-Ausgabe enthält
