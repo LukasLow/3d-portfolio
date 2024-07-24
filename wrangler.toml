@@ -12,3 +12,4 @@ NODE_VERSION = "18"
 [pages]
 # Das Verzeichnis, das die statischen Dateien enthält
 output_dir = "dist"
+pages_build_output_dir = "dist"
