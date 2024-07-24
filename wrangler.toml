@@ -8,3 +8,6 @@ format = "service-worker"
 
 [pages]
 output_dir = "dist"
+
+[site]
+bucket = "./dist"
