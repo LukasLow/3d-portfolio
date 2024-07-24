@@ -1,0 +1,5 @@
+name = "3d-portfolio"
+type = "javascript"
+
+[site]
+bucket = "./dist"
