@@ -1,9 +1,2 @@
-name = "your-project-name"
-type = "javascript"
+name = "3d-portfolio"
 pages_build_output_dir = "dist"
-
-
-[build]
-command = "yarn build"
-[build.upload]
-dir = "dist"  # Der Ordner, der die build-Ausgabe enthält
