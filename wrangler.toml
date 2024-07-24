@@ -1,2 +1,14 @@
-name = "my-pages-app"
-pages_build_output_dir = "./dist"
+name = "my-project"
+type = "javascript"
+
+[build]
+command = "yarn build"
+[build.upload]
+format = "service-worker"
+
+[build.environment]
+NODE_VERSION = "18"
+
+[pages]
+# Das Verzeichnis, das die statischen Dateien enthält
+output_dir = "dist"
