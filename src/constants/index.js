@@ -260,12 +260,12 @@ const experiences = [
     link: "https://gwdg.de",
     icon: gwdg,
     iconBg: "#E6DEDD",
-    date: "09/2023 - today",
+    date: "09/2023 - 10/2024",
     location: "Göttingen, Germany",
     points: [
       "Member of the Working Group “Application and Information Systems” (AG A)",
       "Assistant in the Apple Support Centre for the University Goettingen, Max Planck Society and the GWDG",
-      // "Sorted",
+      "Managing the Monitoring within our Working Group, with openITCockpit und Nagios",
     ],
   },
   {
