@@ -260,7 +260,7 @@ const experiences = [
     link: "https://gwdg.de",
     icon: gwdg,
     iconBg: "#E6DEDD",
-    date: "09/2023 - 10/2024",
+    date: "09/2023 - 08/2024",
     location: "Göttingen, Germany",
     points: [
       "Member of the Working Group “Application and Information Systems” (AG A)",
